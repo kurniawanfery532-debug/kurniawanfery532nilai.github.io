@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Hasil Kalkulasi Nilai</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f4f9; color: #333; margin: 20px; }
+        .container { max-width: 700px; margin: auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #8a9900; border-bottom: 2px solid #8f9900; padding-bottom: 10px; }
+        .header-prodi { text-align: center; margin-bottom: 20px; font-weight: bold; }
+        .result-box { border: 3px solid #8f9900; padding: 15px; border-radius: 5px; margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .summary-row td { font-weight: bold; background-color: #e6f7ff; }
+        .rata-rata-final td { font-size: 1.5em; background-color: #ccffcc; color: #004d99; text-align: center; }
+        .predikat { text-align: center; margin-top: 20px; font-size: 1.2em; font-weight: bold; color: #28a745; }
+        .back-button { display: block; width: 200px; margin: 20px auto 0; text-align: center; padding: 10px; background-color: #6c757d; color: white; text-decoration: none; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌟 REKAPITULASI NILAI MAHASISWA 🌟</h1>
+        <div class="header-prodi">
+            PRODI SISTEM INFORMASI | UNIVERSITAS BALE BANDUNG (UNIBBA)
+        </div>
+        
+        <h2>Laporan Nilai untuk: **{{ nama }}**</h2>
+        
+        <div class="result-box">
+            <table>
+                <tr>
+                    <th>Mata Kuliah</th>
+                    <th style="text-align: right;">Nilai (0-100)</th>
+                </tr>
+                {% for matkul, nilai in hasil.nilai_matkul.items() %}
+                <tr>
+                    <td>{{ matkul }}</td>
+                    <td style="text-align: right;">{{ "%.2f"|format(nilai|float) }}</td>
+                </tr>
+                {% endfor %}
+                
+                <tr class="summary-row">
+                    <td>**Total Nilai ({{ hasil.jumlah_matkul }} Mata Kuliah)**</td>
+                    <td style="text-align: right;">**{{ "%.2f"|format(hasil.total_nilai|float) }}**</td>
+                </tr>
+            </table>
+
+            <table>
+                <tr class="rata-rata-final">
+                    <td>RATA-RATA NILAI (IP Semester): **{{ "%.2f"|format(hasil.rata_rata|float) }}**</td>
+                </tr>
+            </table>
+            
+            <p class="predikat">{{ hasil.predikat }}</p>
+        </div>
+        
+        <a href="{{ url_for('index') }}" class="back-button">Hitung Nilai Baru</a>
+    </div>
+</body>
+</html>
