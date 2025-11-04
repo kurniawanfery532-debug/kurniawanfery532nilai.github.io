@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulator Nilai - UNIBBA SI</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f4f9; color: #333; margin: 20px; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #a09427; border-bottom: 2px solid #8f9900; padding-bottom: 10px; }
+        .header-prodi { text-align: center; margin-bottom: 20px; font-weight: bold; }
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        input[type="text"], input[type="number"] { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { background-color: #ffe600; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; width: 100%; margin-top: 20px; font-size: 16px; }
+        button:hover { background-color: #b3a700; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kalkulator Nilai Mahasiswa</h1>
+        <div class="header-prodi">
+            PRODI SISTEM INFORMASI | UNIVERSITAS BALE BANDUNG (UNIBBA)
+        </div>
+        
+        <form action="/hitung" method="post">
+            <label for="nama_mahasiswa">Nama Mahasiswa:</label>
+            <input type="text" id="nama_mahasiswa" name="nama_mahasiswa" required>
+
+            <h2>Input Nilai Mata Kuliah</h2>
+            
+            <label for="nilai_Algoritma_dan_Pemrograman">Algoritma dan Pemrograman (0-100):</label>
+            <input type="number" step="0.01" id="nilai_Algoritma_dan_Pemrograman" name="nilai_Algoritma_dan_Pemrograman" min="0" max="100" required>
+
+            <label for="nilai_Sistem_Operasi">Sistem Operasi (0-100):</label>
+            <input type="number" step="0.01" id="nilai_Sistem_Operasi" name="nilai_Sistem_Operasi" min="0" max="100" required>
+          
+            <label for="nilai_Pengantar_TI">Pengantar Teknologi Informasi (0-100):</label>
+            <input type="number" step="0.01" id="nilai_Pengantar_TI" name="nilai_Pengantar_TI" min="0" max="100" required>
+            
+            <button type="submit">Hitung Rata-Rata Nilai</button>
+
+        
+        </form>
+    </div>
+</body>
+</html>
